@@ -15,7 +15,6 @@ export default function errorHandler(
 }
 
 function setStatusCode(errorCode: string) {
-  console.log(errorCode);
   if (errorCode === "NotFound") return 404;
   if (errorCode === "Unauthorized") return 401;
   if (errorCode === "InvalidBody") return 422;

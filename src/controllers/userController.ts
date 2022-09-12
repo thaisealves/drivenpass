@@ -1,8 +1,12 @@
 import { Request, Response } from "express";
 import { CreateUser } from "../types/userTypes";
-import { createUser } from "../services/userService";
+import { createUser, accessUser } from "../services/userService";
 export async function signUp(req: Request, res: Response) {
-  const newUser: CreateUser = req.body;
-  await createUser(newUser);
+  await createUser(req.body);
   res.sendStatus(201);
+}
+
+export async function signIn(req: Request, res: Response) {
+  const userToken = await accessUser(req.body);
+  res.status(200).send(userToken);
 }

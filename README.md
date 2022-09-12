@@ -546,3 +546,9 @@ DELETE /doc/{id}
 ####
 
 </br>
+
+## Access the API on:
+
+### https://api-driven-pass.herokuapp.com/
+
+#### OBS.: For security reasons, the token only lasts 5m. If you want it to least more, access if from your machine.

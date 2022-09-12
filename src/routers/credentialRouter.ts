@@ -10,7 +10,7 @@ import {
 const route = Router();
 
 route.post("/credential", validateSchema(credentialSchema), createCredential);
-route.get("/credential", getAllCredentials);
+route.get("/credentials", getAllCredentials);
 route.get("/credential/:id", getUniqueCredential);
 route.delete("/credential/:id", deleteCredential);
 export default route;

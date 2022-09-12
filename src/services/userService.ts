@@ -17,6 +17,13 @@ export async function accessUser(body: CreateUser) {
   if (!seeUser) {
     throw { code: "Conflict", message: "E-mail not registred" };
   }
+  verifyUser(seeUser.password, body.password);
   const token = jwt.createToken({ id: seeUser.id });
   return token;
+}
+
+function verifyUser(password: string, givenPassword: string) {
+  if (!bcrypt.compareSync(givenPassword, password)) {
+    throw { code: "Unauthorized", message: "Password incorrect" };
+  }
 }

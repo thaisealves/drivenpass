@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Valex</h1>
+<h1>DrivenPass</h1>
 </div>
 
 # Description
@@ -271,10 +271,10 @@ POST /note
 
 #### Request:
 
-| Body    | Type     | Description                                        |
-| :------ | :------- | :------------------------------------------------- |
-| `title` | `string` | **Required**. Name for the file                    |
-| `note`  | `uri`    | **Required**. The note the user wants to keep safe |
+| Body    | Type     | Description                                                               |
+| :------ | :------- | :------------------------------------------------------------------------ |
+| `title` | `string` | **Required**. Name for the file. Max length: 50 char                      |
+| `note`  | `uri`    | **Required**. The note the user wants to keep safe. Max length: 1000 char |
 
 ####
 
@@ -394,8 +394,8 @@ GET /wifi/{id}
 
 ####
 
-| Params | Type      | Description                         |
-| :----- | :-------- | :---------------------------------- |
+| Params | Type      | Description                   |
+| :----- | :-------- | :---------------------------- |
 | `id`   | `integer` | **Required**.ID from the wifi |
 
 #### Response :
@@ -440,8 +440,8 @@ DELETE /wifi/{id}
 
 ####
 
-| Params | Type      | Description                         |
-| :----- | :-------- | :---------------------------------- |
+| Params | Type      | Description                   |
+| :----- | :-------- | :---------------------------- |
 | `id`   | `integer` | **Required**.ID from the wifi |
 
 ####

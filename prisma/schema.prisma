@@ -43,7 +43,7 @@ model Cards {
   cardNumber     String
   cardName       String
   cvv            String
-  expirationDate DateTime @db.Date
+  expirationDate String
   password       String
   isVirtual      Boolean
   type           cardType

@@ -1,7 +1,7 @@
 import joi from "joi";
 import { VerifyCard } from "../types/cardsTypes";
 export const cardSchema = joi.object<VerifyCard>({
-  title: joi.string().max(50).required(),
+  title: joi.string().required(),
   cardNumber: joi
     .string()
     .max(16)

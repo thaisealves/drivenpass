@@ -13,9 +13,9 @@ export function validateToken(req: Request, res: Response, next: NextFunction) {
   const verified = jwt.verifyToken(token);
 
   if (!verified) {
-    throw { code: "Unauthorized", message: "Your authorization is uncorrect" };
+    throw { code: "Unauthorized", message: "Your authorization is incorrect" };
   }
 
-  console.log(verified);
+  res.locals.userId = verified;
   next();
 }

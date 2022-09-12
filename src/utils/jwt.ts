@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { IToken } from "../types/tokenTypes";
 
 dotenv.config();
 
@@ -10,13 +11,10 @@ const createToken = (data: object) => {
 };
 
 const verifyToken = (data: string) => {
-  try {
-    const dataToken = jwt.verify(data, SECRET);
-    return dataToken;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  const dataToken = jwt.verify(data, SECRET) as IToken;
+  if (!dataToken) throw { code: "Unauthorized", message: "InvalidToken" };
+
+  return dataToken.id;
 };
 
 export default {

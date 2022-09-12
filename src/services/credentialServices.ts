@@ -12,8 +12,18 @@ dotenv.config();
 
 export async function newCredentialService(createCredential: CreateCredential) {
   const cryptr = new Cryptr(process.env.CRYPTR_PASS as string);
-
+  let count = 0;
   const encryptedPassword = cryptr.encrypt(createCredential.password);
+  const allCredentials = await getAllCredentials(createCredential.userId);
+  allCredentials.map((el) => {
+    if (el.title === createCredential.title) {
+      count++;
+    }
+  });
+  if (count > 0) {
+    throw { code: "Conflict", message: "Title already used" };
+  }
+  
   await insertCredential({ ...createCredential, password: encryptedPassword });
 }
 

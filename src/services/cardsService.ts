@@ -12,9 +12,19 @@ dotenv.config();
 
 export async function newCardService(createCard: CreateCard) {
   const cryptr = new Cryptr(process.env.CRYPTR_PASS as string);
-
+  let count = 0;
   const encryptedPassword = cryptr.encrypt(createCard.password);
   const encryptedCvv = cryptr.encrypt(createCard.cvv);
+  const allCards = await getAllCards(createCard.userId);
+
+  allCards.map((el) => {
+    if (el.title === createCard.title) {
+      count++;
+    }
+  });
+  if (count > 0) {
+    throw { code: "Conflict", message: "Title already used" };
+  }
 
   await insertCard({
     ...createCard,

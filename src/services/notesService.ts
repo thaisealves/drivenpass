@@ -7,6 +7,17 @@ import {
 } from "../repositories/notesRepository";
 
 export async function newNoteService(createNote: CreateNote) {
+  let count = 0;
+  const allNotes = await getAllNotes(createNote.userId);
+  allNotes.map((el) => {
+    if (el.title === createNote.title) {
+      count++;
+    }
+  });
+  if (count > 0) {
+    throw { code: "Conflict", message: "Title already used" };
+  }
+  
   await insertNote(createNote);
 }
 

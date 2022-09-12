@@ -5,7 +5,7 @@ import { IToken } from "../types/tokenTypes";
 dotenv.config();
 
 const SECRET: string = String(process.env.SECRET_KEY);
-const EXP_TIME: string = String(process.env.TOKEN_TIME);
+const EXP_TIME: string = String(process.env.TOKEN_TIME) || "5m";
 const createToken = (data: object) => {
   return jwt.sign(data, SECRET, { expiresIn: EXP_TIME });
 };

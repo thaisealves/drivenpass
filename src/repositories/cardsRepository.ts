@@ -14,15 +14,15 @@ export async function getAllCards(userId: number) {
   return allCards;
 }
 
-export async function getCardById(CardId: number) {
+export async function getCardById(cardId: number) {
   const uniqueCard = await prisma.cards.findUnique({
-    where: { id: CardId },
+    where: { id: cardId },
   });
   return uniqueCard;
 }
 
-export async function deleteCardById(CardId: number) {
+export async function deleteCardById(cardId: number) {
   await prisma.cards.delete({
-    where: { id: CardId },
+    where: { id: cardId },
   });
 }

@@ -1,4 +1,4 @@
-import {cardType} from "@prisma/client"
+import { cardType } from "@prisma/client";
 interface ICard {
   id: number;
   title: string;
@@ -15,5 +15,3 @@ interface ICard {
 type CreateCard = Omit<ICard, "id">;
 type VerifyCard = Omit<ICard, "id" | "userId">;
 export { ICard, CreateCard, VerifyCard };
-
-

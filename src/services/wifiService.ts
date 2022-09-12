@@ -32,9 +32,9 @@ export async function getWifisService(userId: number) {
   return showWifis;
 }
 
-export async function getOneWifi(WifiId: number, userId: number) {
+export async function getOneWifi(wifiId: number, userId: number) {
   const cryptr = new Cryptr(process.env.CRYPTR_PASS as string);
-  const uniqueWifi = await getWifiById(WifiId);
+  const uniqueWifi = await getWifiById(wifiId);
   if (!uniqueWifi) throw { code: "NotFound", message: "Wifi doesn't exist" };
   verifyUserToWifi(userId, uniqueWifi.userId);
   const showWifi = {
@@ -44,13 +44,13 @@ export async function getOneWifi(WifiId: number, userId: number) {
   return showWifi;
 }
 
-export async function deleteOneWifi(WifiId: number, userId: number) {
-  const getWifi = await getWifiById(WifiId);
+export async function deleteOneWifi(wifiId: number, userId: number) {
+  const getWifi = await getWifiById(wifiId);
   if (!getWifi) {
     throw { code: "NotFound", message: "Wifi doesn't exist" };
   }
   verifyUserToWifi(userId, getWifi.userId);
-  await deleteWifiById(WifiId);
+  await deleteWifiById(wifiId);
 }
 
 function verifyUserToWifi(userId: number, WifiUserId: number) {

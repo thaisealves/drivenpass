@@ -37,9 +37,9 @@ export async function getCardsService(userId: number) {
   return showCards;
 }
 
-export async function getOneCard(CardId: number, userId: number) {
+export async function getOneCard(cardId: number, userId: number) {
   const cryptr = new Cryptr(process.env.CRYPTR_PASS as string);
-  const uniqueCard = await getCardById(CardId);
+  const uniqueCard = await getCardById(cardId);
   if (!uniqueCard) throw { code: "NotFound", message: "Card doesn't exist" };
   verifyUserToCard(userId, uniqueCard.userId);
   const showCard = {
@@ -50,13 +50,13 @@ export async function getOneCard(CardId: number, userId: number) {
   return showCard;
 }
 
-export async function deleteOneCard(CardId: number, userId: number) {
-  const getCard = await getCardById(CardId);
+export async function deleteOneCard(cardId: number, userId: number) {
+  const getCard = await getCardById(cardId);
   if (!getCard) {
     throw { code: "NotFound", message: "Card doesn't exist" };
   }
   verifyUserToCard(userId, getCard.userId);
-  await deleteCardById(CardId);
+  await deleteCardById(cardId);
 }
 
 function verifyUserToCard(userId: number, CardUserId: number) {

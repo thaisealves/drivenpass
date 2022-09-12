@@ -14,15 +14,15 @@ export async function getAllWifis(userId: number) {
   return allWifis;
 }
 
-export async function getWifiById(WifiId: number) {
+export async function getWifiById(wifiId: number) {
   const uniqueWifi = await prisma.wifi.findUnique({
-    where: { id: WifiId },
+    where: { id: wifiId },
   });
   return uniqueWifi;
 }
 
-export async function deleteWifiById(WifiId: number) {
+export async function deleteWifiById(wifiId: number) {
   await prisma.wifi.delete({
-    where: { id: WifiId },
+    where: { id: wifiId },
   });
 }
